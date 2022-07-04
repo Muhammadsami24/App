@@ -2,9 +2,7 @@ import { ScrollView, StyleSheet, Text, View, Image, TextInput,Searchbar } from '
 import React from 'react'
 
 const Home = () => {
-  const [searchQuery, setSearchQuery] = React.useState('');
-
-  const onChangeSearch = query => setSearchQuery(query);
+  
   return (
     <ScrollView>
       <Image
