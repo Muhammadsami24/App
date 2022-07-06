@@ -1,10 +1,31 @@
-import { ScrollView, StyleSheet, Text, View, Image, TextInput, Searchbar } from 'react-native'
-import React from 'react'
+import { ScrollView, StyleSheet, Text, View, Image, TextInput, Searchbar, FlatList } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Api from './Api';
 
 const Home = () => {
+
+  const [myUserData,setmyUserData]=useState();
+  const [isLoad,setIsLoad]=useState();
+  
+const getUserData=async()=>{
+  try{
+    const response=await fetch(Api);
+    const myData= await response.json();
+    setmyUserData(myData);
+    console.log(myData);
+    setIsLoad(false);
+  }catch(error){
+    console.log(error);
+  }
+};
+
+  useEffect(()=>{
+    getUserData();
+  },[]);
+
   return (
     <View style={{backgroundColor:"white",height:"100%",width:"100%"}}>
       <View
@@ -26,6 +47,18 @@ const Home = () => {
           style={{ fontSize: 18, marginLeft: 10, }}
         />
       </View>
+      <FlatList
+        data={myUserData}
+        renderItem={({item})=>{
+          return(
+          <View>
+            <Text>{item.name}</Text>
+            <Text>{item.email}</Text>
+            <Text>{item.mobile}</Text>
+          </View>
+          );
+        }}
+      />
     </View>
   );
 };
