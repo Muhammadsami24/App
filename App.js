@@ -7,6 +7,7 @@ import Login from './scr/screen/secondS';
 import Signup from './scr/screen/thirdS';
 import Home from './scr/screen/Home';
 
+
 const Stack = createNativeStackNavigator();
 
 function App() {
