@@ -1,69 +1,189 @@
 import { ScrollView, StyleSheet, Text, View, Image, TextInput, Searchbar, FlatList } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Api from './Api';
+
 
 const Home = () => {
 
-  const [myUserData,setmyUserData]=useState();
-  const [isLoad,setIsLoad]=useState();
-  
-const getUserData=async()=>{
-  try{
-    const response=await fetch(Api);
-    const myData= await response.json();
-    setmyUserData(myData);
-    console.log(myData);
-    setIsLoad(false);
-  }catch(error){
-    console.log(error);
-  }
-};
+  const data =
+    [
+      {
+        id: 1,
+        name: "Muhammad",
+        email: "Muhammad024@gmail.com",
+        Website: "https://unsplash.com/",
+        mobile: "12345678918",
+        image: "https://www.safewise.com/app/uploads/featured-image-first-home.jpg"
+      },
+      {
 
-  useEffect(()=>{
-    getUserData();
-  },[]);
+        id: 2,
+        name: "Ibrar",
+        email: "Muhammad024@gmail.com",
+        Website: "https://unsplash.com/",
+        mobile: "12345678918",
+        image: "https://www.safewise.com/app/uploads/featured-image-first-home.jpg"
+      },
+      {
+        id: 3,
+        name: "Sheroz",
+        email: "Muhammad024@gmail.com",
+        Website: "https://unsplash.com/",
+        mobile: "12345678918",
+        image: "https://www.safewise.com/app/uploads/featured-image-first-home.jpg"
+      },
+      {
+        id: 4,
+        name: "Arsalan",
+        email: "Muhammad024@gmail.com",
+        Website: "https://unsplash.com/",
+        mobile: "12345678918",
+        image: "https://www.safewise.com/app/uploads/featured-image-first-home.jpg"
+      },
+      {
+        id: 5,
+        name: "Arsalan",
+        email: "Muhammad024@gmail.com",
+        Website: "https://unsplash.com/",
+        mobile: "12345678918",
+        image: "https://www.safewise.com/app/uploads/featured-image-first-home.jpg"
+      },
+      {
+        id: 6,
+        name: "Arsalan",
+        email: "Muhammad024@gmail.com",
+        Website: "https://unsplash.com/",
+        mobile: "12345678918",
+        image: "https://www.safewise.com/app/uploads/featured-image-first-home.jpg"
+      },
+      {
+        id: 7,
+        name: "Arsalan",
+        email: "Muhammad024@gmail.com",
+        Website: "https://unsplash.com/",
+        mobile: "12345678918",
+        image: "https://www.safewise.com/app/uploads/featured-image-first-home.jpg"
+      },
+      {
+        id: 8,
+        name: "Arsalan",
+        email: "Muhammad024@gmail.com",
+        Website: "https://unsplash.com/",
+        mobile: "12345678918",
+        image: "https://www.safewise.com/app/uploads/featured-image-first-home.jpg"
+      },
+      {
+        id: 9,
+        name: "Arsalan",
+        email: "Muhammad024@gmail.com",
+        Website: "https://unsplash.com/",
+        mobile: "12345678918",
+        image: "https://www.safewise.com/app/uploads/featured-image-first-home.jpg"
+      },
+      {
+        id: 10,
+        name: "Arsalan",
+        email: "Muhammad024@gmail.com",
+        Website: "https://unsplash.com/",
+        mobile: "12345678918",
+        image: "https://www.safewise.com/app/uploads/featured-image-first-home.jpg"
+      },
+      {
+        id: 11,
+        name: "Arsalan",
+        email: "Muhammad024@gmail.com",
+        Website: "https://unsplash.com/",
+        mobile: "12345678918",
+        image: "https://www.safewise.com/app/uploads/featured-image-first-home.jpg"
+      },
+      {
+        id: 12,
+        name: "Arsalan",
+        email: "Muhammad024@gmail.com",
+        Website: "https://unsplash.com/",
+        mobile: "12345678918",
+        image: "https://www.safewise.com/app/uploads/featured-image-first-home.jpg"
+      },
+
+    ]
 
   return (
-    <View style={{backgroundColor:"white",height:"100%",width:"100%"}}>
-      <View
-        style={{
-          elevation: 5,
-          backgroundColor: "white",
-          marginTop: 50,
-          paddingVertical: 5,
-          paddingLeft: 15,
-          borderRadius: 30,
-          marginHorizontal: 20,
-          alignItems: "center",
-          flexDirection: "row",
-
-        }}>
-        <FontAwesome name="search" size={20} color="grey" />
+    <View style={styles.container}>
+     <Text style={{fontFamily:"Nunito-Bold", fontSize:20 ,alignSelf:"center",marginBottom:10,color:"black"}}>Home</Text>
+    <Text style={{fontFamily:"Nunito-Bold", fontSize:20}}>Muhammad Samiullah</Text>
+      <View style={styles.search}>
+        <AntDesign name='search1' size={20} />
         <TextInput
           placeholder='Search'
-          style={{ fontSize: 18, marginLeft: 10, }}
+          style={{ paddingHorizontal:20, flexDirection: "row", justifyContent: "space-between" }}
         />
       </View>
       <FlatList
-        data={myUserData}
-        renderItem={({item})=>{
-          return(
-          <View>
-            <Text>{item.name}</Text>
-            <Text>{item.email}</Text>
-            <Text>{item.mobile}</Text>
-          </View>
-          );
+        data={data}
+        numColumns={2}
+        showsVerticalScrollIndicator={false}
+        renderItem={({ item }) => {
+          return (
+
+            <View style={styles.flatlist}>
+              <Image
+                source={{ uri: item.image }}
+                style={styles.image}
+              />
+              <Text style={styles.text}>{item.id}</Text>
+              <Text style={styles.text}>{item.name}</Text>
+              <Text style={styles.text}>{item.mobile}</Text>
+            </View>
+          )
         }}
+        keyExtractor={(item) => item.id}
       />
     </View>
   );
 };
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: 50,
+    margin: 10,
+    padding: 10,
+    color:"white",
 
+  },
+  flatlist: {
+    backgroundColor: "grey",
+    justifyContent: "center",
+    alignItems: "flex-start",
+    padding: 20,
+    margin: 10,
+    borderRadius: 15,
+  },
+  text: {
+    color: "white",
+  },
+  image: {
+    width: 100,
+    height: 100,
+    marginBottom:10,
+    borderRadius:10,
+    
+  },
+  search: {
+    fontSize:12,
+    height: 50,
+    flexDirection: "row",
+    marginTop: 20,
+    alignItems: "center",
+    backgroundColor: "white",
+    elevation: 8,
+    paddingTop: 5,
+    paddingBottom: 5,
+    borderRadius: 40,
+    paddingLeft: 10,
+    marginBottom:10,
+  }
 })
 
 export default Home

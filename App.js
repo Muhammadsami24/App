@@ -6,9 +6,11 @@ import Start from './scr/screen/firstS';
 import Login from './scr/screen/secondS';
 import Signup from './scr/screen/thirdS';
 import Home from './scr/screen/Home';
+import Api from './scr/screen/Api';
 
 
 const Stack = createNativeStackNavigator();
+
 
 function App() {
   return (
