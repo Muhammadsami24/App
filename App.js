@@ -7,6 +7,8 @@ import Login from './scr/screen/secondS';
 import Signup from './scr/screen/thirdS';
 import Home from './scr/screen/Home';
 import Api from './scr/screen/Api';
+import StudentDetail from './scr/screen/StudentDetail';
+
 
 
 const Stack = createNativeStackNavigator();
@@ -24,6 +26,7 @@ function App() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="Home" component={Home}/>
+        <Stack.Screen name="StudentDetail" component={StudentDetail}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

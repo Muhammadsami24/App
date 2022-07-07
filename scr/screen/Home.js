@@ -1,11 +1,12 @@
-import { ScrollView, StyleSheet, Text, View, Image, TextInput, Searchbar, FlatList } from 'react-native'
+import { ScrollView, StyleSheet, Text, View, Image, TextInput, Searchbar, FlatList, TouchableOpacity, Alert } from 'react-native'
 import React from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import StudentDetail from './StudentDetail';
 
 
-const Home = () => {
+const Home = ({navigation}) => {
 
   const data =
     [
@@ -120,26 +121,33 @@ const Home = () => {
           style={{ paddingHorizontal:20, flexDirection: "row", justifyContent: "space-between" }}
         />
       </View>
+      
       <FlatList
         data={data}
         numColumns={2}
         showsVerticalScrollIndicator={false}
+       
         renderItem={({ item }) => {
           return (
-
+            <TouchableOpacity
+            onPress={() => navigation.navigate("StudentDetail")}
+            >
             <View style={styles.flatlist}>
               <Image
                 source={{ uri: item.image }}
                 style={styles.image}
               />
-              <Text style={styles.text}>{item.id}</Text>
-              <Text style={styles.text}>{item.name}</Text>
-              <Text style={styles.text}>{item.mobile}</Text>
+              <Text style={styles.text}>ID: {item.id}</Text>
+              <Text style={styles.text}>Name: {item.name}</Text>
+              <Text style={styles.text}>Ph#: {item.mobile}</Text>
             </View>
+            </TouchableOpacity>
           )
         }}
+       
         keyExtractor={(item) => item.id}
       />
+     
     </View>
   );
 };
@@ -153,19 +161,20 @@ const styles = StyleSheet.create({
 
   },
   flatlist: {
-    backgroundColor: "grey",
-    justifyContent: "center",
-    alignItems: "flex-start",
+    backgroundColor: "white",
+    elevation:8,
     padding: 20,
     margin: 10,
     borderRadius: 15,
   },
   text: {
-    color: "white",
+    color: "black",
+    fontSize:10,
   },
   image: {
     width: 100,
     height: 100,
+    
     marginBottom:10,
     borderRadius:10,
     
