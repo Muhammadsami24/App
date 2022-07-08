@@ -130,6 +130,7 @@ const Home = ({navigation}) => {
         renderItem={({ item }) => {
           return (
             <TouchableOpacity
+             activeOpacity={0.8}
             onPress={() => navigation.navigate("StudentDetail")}
             >
             <View style={styles.flatlist}>
